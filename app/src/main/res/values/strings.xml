@@ -7,4 +7,10 @@
     <string name="confirm_password">confirm_password</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
+    <string name="full_name">Full Name</string>
+    <string name="this_is_book">This is Book</string>
+    <string name="here_is_full_name">Here is Full Name</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="remember_me">Remember Me</string>
 </resources>
