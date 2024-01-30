@@ -12,8 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cart_icon"
-        android:icon="@drawable/baseline_shopping_bag_24"
-        android:title="" />
+        android:icon="@drawable/search_black_24dp"
+        android:title=""/>
     <item
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

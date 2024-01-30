@@ -56,11 +56,7 @@ public class Successful_MainActivity extends AppCompatActivity {
     private boolean loadFragment(Fragment fragment) {
         if (fragment != null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-            // Replace the existing container with the fragment
             transaction.replace(R.id.FrameLayout, fragment);
-
-            // Commit the transaction
             transaction.commit();
             return true;
         }

@@ -6,24 +6,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
-
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtCaregoryName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
         android:layout_marginStart="10dp"
-        android:text="@string/categories"
+        android:text="@string/category_name"
         android:textSize="30sp"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view2"
+        android:id="@+id/recycler_view3"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

@@ -1,13 +1,16 @@
 package com.example.finalproject.Book;
 
 public class clsBook {
-    private String title,category, pages,image;
+    private String title, category, pages, image, imageCover;
+    private int copies;
 
-    public clsBook(String title, String category, String pages, String image) {
+    public clsBook(String title, String category, String pages, String image, int copies, String imageCover) {
         this.title = title;
         this.category = category;
         this.pages = pages;
         this.image = image;
+        this.copies = copies;
+        this.imageCover = imageCover;
     }
 
     public String getTitle() {
@@ -42,4 +45,19 @@ public class clsBook {
         this.image = image;
     }
 
+    public int getCopies() {
+        return copies;
+    }
+
+    public void setCopies(int copies) {
+        this.copies = copies;
+    }
+
+    public String getImageCover() {
+        return imageCover;
+    }
+
+    public void setImageCover(String imageCover) {
+        this.imageCover = imageCover;
+    }
 }
