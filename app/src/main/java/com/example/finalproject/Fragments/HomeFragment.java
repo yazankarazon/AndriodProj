@@ -2,9 +2,11 @@ package com.example.finalproject.Fragments;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -33,7 +35,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment implements CategoryClickListener {
+public class HomeFragment extends Fragment implements CategoryClickListener{
 
     private RecyclerView recyclerView, recyclerView2;
     public static List<clsBook> bookList;
@@ -116,6 +118,10 @@ public class HomeFragment extends Fragment implements CategoryClickListener {
 
     }
 
+
+
+
+
     private void ListData() {
         String url = "http://10.0.2.2:5000/getbooks";
         requestQueue = Volley.newRequestQueue(requireContext());
@@ -185,17 +191,28 @@ public class HomeFragment extends Fragment implements CategoryClickListener {
     public void onCategoryClick(String categoryName) {
         ShowBooksFromCategoryFragment showBooksFragment = new ShowBooksFromCategoryFragment();
 
-        // Pass any necessary data to the new fragment using a Bundle if needed
         Bundle bundle = new Bundle();
-        bundle.putString("categoryName", categoryName);
+        bundle.putString(ShowBooksFromCategoryFragment.ARG_PARAM1, categoryName); // Use the correct argument key
         showBooksFragment.setArguments(bundle);
 
-        // Replace the current fragment with the new fragment
-        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.FrameLayout, showBooksFragment);
-        transaction.addToBackStack(null); // Optional: Adds the transaction to the back stack
-        transaction.commit();
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+        // Find the FrameLayout in the fragment's layout
+        View fragmentView = getView(); // Get the fragment's view
+        if (fragmentView != null) {
+            FrameLayout container = fragmentView.findViewById(R.id.FrameLayout); // Assuming this is the correct ID
+            if (container != null) {
+                transaction.replace(container.getId(), showBooksFragment);
+                transaction.addToBackStack(null); // Optional for back navigation
+                transaction.commit();
+            } else {
+                Log.e("TAG", "Container with ID R.id.FrameLayout not found");
+                // Handle the error gracefully, e.g., display a message to the user
+            }
+        }
     }
+
 
 
 }

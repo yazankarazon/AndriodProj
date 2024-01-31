@@ -1,6 +1,8 @@
 package com.example.finalproject.Book;
 
-public class clsBook {
+import java.io.Serializable;
+
+public class clsBook implements Serializable {
     private String title, category, pages, image, imageCover;
     private int copies;
 

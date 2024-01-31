@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -20,10 +19,22 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
 
     private List<clsBook> bookList;
     private Context context;
+    private OnItemClickListener listener;
+
+    public BookAdapter(List<clsBook> bookList, Context context, OnItemClickListener listener) {
+        this.bookList = bookList;
+        this.context = context;
+        this.listener = listener;
+    }
 
     public BookAdapter(List<clsBook> bookList, Context context) {
         this.bookList = bookList;
         this.context = context;
+    }
+
+    // Setter for item click listener
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -38,14 +49,23 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         clsBook book = bookList.get(position);
 
         holder.titleTextView.setText(book.getTitle());
-        // holder.categoryTextView.setText(book.getCategory());
-        // holder.pagesTextView.setText(book.getPages());
         Glide.with(context)
                 .load(book.getImage())
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .error(R.drawable.ic_launcher_foreground)
                 .into(holder.imageView);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int clickedPosition = holder.getAdapterPosition();
+                if (listener != null && clickedPosition != RecyclerView.NO_POSITION) {
+                    listener.onItemClick(bookList.get(clickedPosition)); // Pass clicked book to listener
+                }
+            }
+        });
     }
+
 
     @Override
     public int getItemCount() {
@@ -60,8 +80,10 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
             super(itemView);
             imageView = itemView.findViewById(R.id.book_img);
             titleTextView = itemView.findViewById(R.id.book_title);
-            // categoryTextView = itemView.findViewById(R.id.book_category);
-            // pagesTextView = itemView.findViewById(R.id.book_pages);
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(clsBook book);
     }
 }
