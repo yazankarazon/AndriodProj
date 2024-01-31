@@ -1,6 +1,9 @@
 package com.example.finalproject.Fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +15,7 @@ import com.example.finalproject.clsCurrentUser;
 import com.example.finalproject.R;
 
 public class ProfileFragment extends Fragment {
-    private TextView txtFullName;
+    private TextView txtFullName, txtStudentNumber;
 
 
     public ProfileFragment() {
@@ -20,15 +23,17 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        txtFullName = view.findViewById(R.id.txtFullName); // Initialize txtFullName here
-        printFullName();
+        txtFullName = view.findViewById(R.id.txtFullName);
+        txtStudentNumber = view.findViewById(R.id.txtStudentNumber);
+        printInfo();
         return view;
     }
 
-    private void printFullName() {
+    private void printInfo() {
         String fullName = clsCurrentUser.CurrentUser.getFirstname() + " " + clsCurrentUser.CurrentUser.getLastname();
         txtFullName.setText("Welcome, " + fullName);
+
+        txtStudentNumber.setText("Student Number: "+clsCurrentUser.CurrentUser.getUsername());
     }
 }

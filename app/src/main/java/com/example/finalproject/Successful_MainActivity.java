@@ -3,16 +3,15 @@ package com.example.finalproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
-import com.example.finalproject.Fragments.CartFragment;
 import com.example.finalproject.Fragments.HomeFragment;
 import com.example.finalproject.Fragments.ProfileFragment;
+import com.example.finalproject.Fragments.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Successful_MainActivity extends AppCompatActivity {
@@ -40,7 +39,7 @@ public class Successful_MainActivity extends AppCompatActivity {
                     return loadFragment(fragment);
                 }
                 else if (item.getItemId() == R.id.cart_icon) {
-                    fragment = new CartFragment();
+                    fragment = new SearchFragment();
                     return loadFragment(fragment);
                 }
                 else if (item.getItemId() == R.id.profile_icon)

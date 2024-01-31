@@ -192,26 +192,25 @@ public class HomeFragment extends Fragment implements CategoryClickListener{
         ShowBooksFromCategoryFragment showBooksFragment = new ShowBooksFromCategoryFragment();
 
         Bundle bundle = new Bundle();
-        bundle.putString(ShowBooksFromCategoryFragment.ARG_PARAM1, categoryName); // Use the correct argument key
+        bundle.putString(ShowBooksFromCategoryFragment.ARG_PARAM1, categoryName);
         showBooksFragment.setArguments(bundle);
 
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-        // Find the FrameLayout in the fragment's layout
-        View fragmentView = getView(); // Get the fragment's view
+        View fragmentView = getView();
         if (fragmentView != null) {
-            FrameLayout container = fragmentView.findViewById(R.id.FrameLayout); // Assuming this is the correct ID
+            FrameLayout container = fragmentView.findViewById(R.id.FrameLayout);
             if (container != null) {
                 transaction.replace(container.getId(), showBooksFragment);
-                transaction.addToBackStack(null); // Optional for back navigation
+                transaction.addToBackStack(null);
                 transaction.commit();
             } else {
                 Log.e("TAG", "Container with ID R.id.FrameLayout not found");
-                // Handle the error gracefully, e.g., display a message to the user
             }
         }
     }
+
 
 
 

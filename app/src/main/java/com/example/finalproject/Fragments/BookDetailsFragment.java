@@ -44,7 +44,7 @@ public class BookDetailsFragment extends Fragment {
 
             Glide.with(requireContext())
                     .load(book.getImage())
-                    .placeholder(R.drawable.ic_launcher_background)
+                    .placeholder(R.drawable.ic_launcher_foreground)
                     .error(R.drawable.ic_launcher_foreground)
                     .into(detailsImage);
 

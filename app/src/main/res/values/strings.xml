@@ -19,4 +19,6 @@
     <string name="show_books">Show Books</string>
     <string name="category_name">Category Name</string>
     <string name="get_book">Get Book</string>
+    <string name="student_number">Student Number</string>
+    <string name="search_by_title">Search By Title</string>
 </resources>

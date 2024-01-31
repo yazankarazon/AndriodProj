@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -21,6 +22,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     private Context context;
     private OnItemClickListener listener;
 
+    public void setFilterList(List<clsBook> filterList){
+        this.bookList = filterList;
+        notifyDataSetChanged();
+    }
+
     public BookAdapter(List<clsBook> bookList, Context context, OnItemClickListener listener) {
         this.bookList = bookList;
         this.context = context;
@@ -32,10 +38,6 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         this.context = context;
     }
 
-    // Setter for item click listener
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        this.listener = listener;
-    }
 
     @NonNull
     @Override
