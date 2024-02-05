@@ -16,14 +16,20 @@ import org.json.JSONObject;
 
 
 public class clsUser {
+    private int id;
     private String firstname,lastname, username, password;
 
 
-    public clsUser(String firstname, String lastname, String username, String password) {
+    public clsUser(int id,String firstname, String lastname, String username, String password) {
+        this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.username = username;
         this.password = password;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getFirstname() {
@@ -125,13 +131,14 @@ public class clsUser {
                             if (!response.isNull("firstname") && !response.isNull("lastname") &&
                                     !response.isNull("username") && !response.isNull("password")) {
 
-                                String fetchedFirstName = response.getString("firstname");
-                                String fetchedLastName = response.getString("lastname");
-                                String fetchedUsername = response.getString("username");
-                                String fetchedPassword = response.getString("password");
+                                int Id = response.getInt("id");
+                                String FirstName = response.getString("firstname");
+                                String LastName = response.getString("lastname");
+                                String Username = response.getString("username");
+                                String Password = response.getString("password");
 
 
-                                clsUser fetchedUser = new clsUser(fetchedFirstName, fetchedLastName, fetchedUsername, fetchedPassword);
+                                clsUser fetchedUser = new clsUser(Id,FirstName, LastName, Username, Password);
 
                                 // Update the callback to pass both boolean and User
                                 callback.onExistCheck(true, fetchedUser);

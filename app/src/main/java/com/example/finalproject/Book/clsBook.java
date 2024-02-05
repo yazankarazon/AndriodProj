@@ -3,16 +3,30 @@ package com.example.finalproject.Book;
 import java.io.Serializable;
 
 public class clsBook implements Serializable {
+
+    private int id;
     private String title, category, pages, image, imageCover;
     private int copies;
 
-    public clsBook(String title, String category, String pages, String image, int copies, String imageCover) {
+    public clsBook(int id, String title, String image, int copies) {
+        this.id = id;
+        this.title = title;
+        this.image = image;
+        this.copies = copies;
+    }
+
+    public clsBook(int id, String title, String category, String pages, String image, int copies, String imageCover) {
+        this.id = id;
         this.title = title;
         this.category = category;
         this.pages = pages;
         this.image = image;
         this.copies = copies;
         this.imageCover = imageCover;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getTitle() {

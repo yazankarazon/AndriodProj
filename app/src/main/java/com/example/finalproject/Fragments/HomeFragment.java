@@ -1,5 +1,6 @@
 package com.example.finalproject.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -41,6 +42,7 @@ public class HomeFragment extends Fragment implements CategoryClickListener{
     public static List<clsBook> bookList;
     private List<clsCategory> categoryList;
     private RequestQueue requestQueue;
+
 
     private int currentPosition = 0;
     private Handler handler;
@@ -135,13 +137,14 @@ public class HomeFragment extends Fragment implements CategoryClickListener{
                         try {
                             for (int i = 0; i < response.length(); i++) {
                                 JSONObject bookObject = response.getJSONObject(i);
+                                int id = bookObject.getInt("id");
                                 String title = bookObject.getString("title");
                                 String category = bookObject.getString("categoryName");
                                 String pages = bookObject.getString("pages");
                                 String imageUrl = bookObject.getString("image");
                                 int copies = bookObject.getInt("copies");
                                 String imageCover = bookObject.getString("image_cover");
-                                clsBook book = new clsBook(title, category, pages, imageUrl, copies, imageCover);
+                                clsBook book = new clsBook(id,title, category, pages, imageUrl, copies, imageCover);
                                 bookList.add(book);
                             }
                         } catch (JSONException e) {
@@ -163,6 +166,10 @@ public class HomeFragment extends Fragment implements CategoryClickListener{
         );
         requestQueue.add(jsonArrayRequest);
     }
+
+
+
+
 
     private void startAutoScroll() {
         handler = new Handler();

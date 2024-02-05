@@ -21,4 +21,8 @@
     <string name="get_book">Get Book</string>
     <string name="student_number">Student Number</string>
     <string name="search_by_title">Search By Title</string>
+    <string name="borrowed_books">Borrowed books</string>
+    <string name="log_out">Log out</string>
+    <string name="My_borrowed_books" />
+    <string name="my_borrowed_books">My Borrowed Books</string>
 </resources>
